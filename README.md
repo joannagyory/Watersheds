@@ -2,9 +2,12 @@
 An exploration of New Hampshire rivers
 
 
+## Step 1: Cleaning and processing water sensor data
+
+The main challenge here was that not all water sensors measured the same variables. I used a python script (CommonColumns.ipynb) to find the variables that were common to all water sensors. Then, I used another script (Sensors_Daily_Average.R) to subset the data from each water sensors to the common variables, then computed their daily averages.
 
 
-## Code for processing weather data
+## Step 2: Cleaning and processing weather data
 
 USR_US1_Weather.R combines daily temperature data from NOAA station USR0000NWMT and daily precipitation data from NOAA station US1NHCR0012.
 
