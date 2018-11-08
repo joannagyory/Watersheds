@@ -23,6 +23,7 @@ WBAN_Daily_temp_precip.R combines daily temperature and precipitation data for a
 
 MergeData.R accomplishes this task
 
-## Step 4: Average daily data by week, month, quarter, and year
+## Step 4: Average daily data by week, month, quarter, and year, and concatenate files for all stations
 
-AveragedOverTimePeriods.R accomplishes this task
+AveragedOverTimePeriods.R averages the data by the different time periods
+ConcatFiles concatenates data from all stations for a given timestep (daily, weekly, etc.)
