@@ -18,3 +18,11 @@ TracePrecip.R computes the daily precipitation for the "WBAN" NOAA stations (547
 WBAN_Daily_temps.R calculates the daily mean, min, and max temperatures for WBAN NOAA stations
 
 WBAN_Daily_temp_precip.R combines daily temperature and precipitation data for a given WBAN NOAA station
+
+## Step 3: Merging water sensor data, weather station data, and information on watershed physiography
+
+MergeData.R accomplishes this task
+
+## Step 4: Average daily data by week, month, quarter, and year
+
+AveragedOverTimePeriods.R accomplishes this task
