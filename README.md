@@ -26,4 +26,5 @@ MergeData.R accomplishes this task
 ## Step 4: Average daily data by week, month, quarter, and year, and concatenate files for all stations
 
 AveragedOverTimePeriods.R averages the data by the different time periods
+
 ConcatFiles concatenates data from all stations for a given timestep (daily, weekly, etc.)
