@@ -15,7 +15,7 @@ waterstations <- c('BDC', 'BEF', 'DCF', 'GOF', 'HBF', 'LMP', 'MCQ', 'SBM', 'TPB'
 weatherstations <- c('54795', 'USR_US1', 'USC00272800', '14710', '64773', '54795', '14710', 'USC00272800', '54791', '54795')
 
 # Location of watershed physiography data
-physiography <- read_csv("C:/Users/Joanna/Desktop/Analytics/Fall Semester/Watershed Analytics Project/Physiography/NH Aquatic Sensors Meta Data2.csv")
+physiography <- read_csv("C:/Users/Joanna/Desktop/Analytics/Fall Semester/Watershed Analytics Project/Physiography/Watershed Physiography Data.csv")
 
 # For each watershed, merge water sensor data with weather station data and physiography information
 for (i in 1:10){
