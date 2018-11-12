@@ -9,6 +9,8 @@ The main challenge here was that not all water sensors measured the same variabl
 
 ## Step 2: Cleaning and processing weather data
 
+I searched through the National Oceanic and Atmospheric Administration's website to find the weather stations that were closest to the water sensors and that had data collection ranges that overlapped with those of the water sensors. Some stations had hourly records, other had daily records. Some measured both temperature and precipitation, while others measured only one of those variables. A substantial amount of work went into cleaning, oganizing, and merging all the data.
+
 USR_US1_Weather.R combines daily temperature data from NOAA station USR0000NWMT and daily precipitation data from NOAA station US1NHCR0012.
 
 USC_Weather.R processes data from NOAA station USC00272800. It converts daily temperature from degrees F to degrees C.
@@ -21,10 +23,16 @@ WBAN_Daily_temp_precip.R combines daily temperature and precipitation data for a
 
 ## Step 3: Merging water sensor data, weather station data, and information on watershed physiography
 
-MergeData.R accomplishes this task
+When the three types of information were finalized for each water sensor sampling station, they were merged.
+
+MergeData.R accomplishes this task.
 
 ## Step 4: Average daily data by week, month, quarter, and year, and concatenate files for all stations
 
 AveragedOverTimePeriods.R averages the data by the different time periods
 
 ConcatFiles concatenates data from all stations for a given timestep (daily, weekly, etc.)
+
+## Step 5: Build a Shiny app to visualize some of the data
+
+ShinyRiverApp.R builds a Shiny app that displays a time series of air and water temperature at each site. The user can specify the date range of interest. It also displays a map with circles whose radii are proportional to the water flow during each week of the year 2015.
