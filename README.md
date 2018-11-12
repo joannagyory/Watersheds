@@ -1,6 +1,6 @@
-# Watersheds
-An exploration of New Hampshire rivers
+# Watersheds: An exploration of New Hampshire rivers
 
+This repository contains code used to process and visualize data collected by sensors placed in ten rivers in New Hampshire by the Watershed Informatics Pilot Research Partnership (WinPReP) team at the University of New Hampshire. As a member of this team, I plan to use the large volumes of data being collected by the high-frequency sensors to answer fundamental questions of watershed science by harnessing the power of predictive analytics and machine learning. These are the steps I took in preparing the data for analysis.
 
 ## Step 1: Cleaning and processing water sensor data
 
