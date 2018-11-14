@@ -7,7 +7,7 @@ library(lubridate)
 library(leaflet)
 
 # Set directories, read files, subset data
-#setwd("C:/Users/Joanna/Desktop/Analytics/Fall Semester/R and Tableau/October Assignment/Part 2/ShinyApp")
+#setwd()
 df <- read.csv("Concatenated_Weekly.csv")
 df$Date <- ymd(df$Date)
 df2015 <- filter(df, Year == 2015)
@@ -22,18 +22,53 @@ ui <- fluidPage(
              h3("Welcome!"),
              br(),
              h4("This app displays data collected since 2013 at ten rivers throughout New Hampshire. 
-                The Temperatures tab showcases air and water temperature at each site. It allows 
-                subsetting by site and date range, and displays the data in a table below. The River 
-                Flow tab has a map of the water sensors indicated by circles whose radii change as a 
-                function of the volume of water flow measured through time. It also includes time
-                series plots of precipitation and air temperature to aid in the interpretation of the
-                river flow data."),
+                The River Flow tab has a map of the water sensors indicated by circles whose radii 
+                change as a function of the volume of water flow measured through time. Pressing the
+                'play' button on the slider bar will animate the changes in river flow for every week
+                in 2015. The River Flow tab also includes time series plots of precipitation and air 
+                temperature to aid in the interpretation of the river flow data. The Temperatures tab 
+                showcases air and water temperature at each site. It allows subsetting by site and 
+                date range, and displays the data in a table below. "),
              br(),
              br(),
              h5("Author: Joanna Gyory"),
              h5("jg1088@wildcats.unh.edu")
              ),
-    # The second tab will have the time series plots of air and water temperature, along with
+    # The second tab will have a map of the water sensors indicated by circles whose radii change
+    # as a function of the volume of water flow measured through time.
+    tabPanel("River Flow",
+             verticalLayout(
+               h3("Size of circles is proportional to water flow"),
+               
+               
+               
+               # Put a slider on the top right hand corner of the map to cycle through the weeks of the
+               # year in 2015.
+               absolutePanel(top = 1, right = 20,
+                             sliderInput("week", "Week of the year in 2015",min = 1, 
+                                         max = 52,
+                                         value = 1,
+                                         step=1,
+                                         animate=animationOptions(interval = 300) # This sets the animation speed
+                             ),
+                             style = "z-index: 1000;"
+               ),
+               
+               # Use the "leaflet" library to create a map
+               leafletOutput("mymap",height = 700),
+               
+               
+               hr(),
+               h3("Precipitation at station MCQ (Merrimack River)"),
+               plotlyOutput("rain"),
+               
+               hr(),
+               h3("Air temperature at station MCQ (Merrimack River)"),
+               plotlyOutput("airtemp")
+               
+             )
+    ),
+    # The third tab will have the time series plots of air and water temperature, along with
     # options to subset by site and date range, and a display of the data in a table below.
     tabPanel("Temperatures",
              verticalLayout(
@@ -49,41 +84,8 @@ ui <- fluidPage(
                       h4("Data table"),
                       dataTableOutput(outputId = "table")
                )
-               ),
-    # The third tab will have a map of the water sensors indicated by circles whose radii change
-    # as a function of the volume of water flow measured through time.
-    tabPanel("River Flow",
-             verticalLayout(
-               h3("Size of circles is proportional to water flow"),
-               
+               )
 
-               
-               # Put a slider on the top right hand corner of the map to cycle through the weeks of the
-               # year in 2015.
-               absolutePanel(top = 1, right = 20,
-                             sliderInput("week", "Week of the year in 2015",min = 1, 
-                                         max = 52,
-                                         value = 1,
-                                         step=1,
-                                         animate=animationOptions(interval = 300) # This sets the animation speed
-                           ),
-                           style = "z-index: 1000;"
-               ),
-               
-               # Use the "leaflet" library to create a map
-               leafletOutput("mymap",height = 1000),
-
-               
-               hr(),
-               h3("Precipitation at station MCQ (Merrimack River)"),
-               plotlyOutput("rain"),
-               
-               hr(),
-               h3("Air temperature at station MCQ (Merrimack River)"),
-               plotlyOutput("airtemp")
-               
-             )
-    )
   )
 )
                       
@@ -163,7 +165,6 @@ server <- function(input, output, session) {
       
     }
   )
-  
 }
 
 # Create a Shiny app object
