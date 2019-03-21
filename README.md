@@ -36,6 +36,7 @@ ConcatFiles concatenates data from all stations for a given timestep (daily, wee
 ## Step 5: Build a Shiny app to visualize some of the data
 
 ShinyRiverApp.R builds a Shiny app that displays a time series of air and water temperature at each site. The user can specify the date range of interest. It also displays a map with circles whose radii are proportional to the water flow during each week of the year 2015.
+https://joannagyory.shinyapps.io/ShinyRiverApp2/
 
 ## Step 6: Explore the ability of XGBoost to predict different water flow and chemistry parameters at different time scales
 
