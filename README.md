@@ -1,6 +1,6 @@
 # Watersheds: An exploration of New Hampshire rivers
 
-This repository contains code used to process and visualize data collected by sensors placed in ten New Hampshire rivers by the Watershed Informatics Pilot Research Partnership (WinPReP) team at the University of New Hampshire. As a member of this team, I plan to use the large volumes of data being collected by the high-frequency sensors to answer fundamental questions of watershed science by harnessing the power of predictive analytics and machine learning. These are the steps I took in preparing the data for analysis.
+This repository contains code used to process and visualize data collected by sensors placed in ten New Hampshire rivers by the Watershed Informatics Pilot Research Partnership (WinPReP) team at the University of New Hampshire. As a member of this team, I plan to use the large volumes of data being collected by the high-frequency sensors to answer fundamental questions of watershed science by harnessing the power of predictive analytics and machine learning. 
 
 ## Step 1: Cleaning and processing water sensor data
 
@@ -36,3 +36,7 @@ ConcatFiles concatenates data from all stations for a given timestep (daily, wee
 ## Step 5: Build a Shiny app to visualize some of the data
 
 ShinyRiverApp.R builds a Shiny app that displays a time series of air and water temperature at each site. The user can specify the date range of interest. It also displays a map with circles whose radii are proportional to the water flow during each week of the year 2015.
+
+## Step 6: Explore the ability of XGBoost to predict different water flow and chemistry parameters at different time scales
+
+XGBoost will not take into account any latency in the data. In fact, it will not consider time or sequences at all. Therefore, it is not likely to be the optimal method for forecasting from time series data. However, it will provide a useful comparison with methods that do incorporate sequential information.
